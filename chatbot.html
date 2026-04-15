@@ -12,16 +12,16 @@
 
     <!--=============== CSS ===============-->
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/farmers.css">
+    <link rel="stylesheet" href="assets/css/chatbot.css">
 
-    <title>Farmers Schedule - PLANT GROWING GUIDE</title>
+    <title>Farmer AI Chatbot - PLANT GROWING GUIDE</title>
 </head>
 <body>
     <!--==================== HEADER ====================-->
     <header class="header" id="header">
         <nav class="nav container">
             <a href="index.html" class="nav__logo">
-                <i class="ri-leaf-line nav__logo-icon"></i> 
+                <i class="ri-leaf-line nav__logo-icon"></i>
             </a>
 
             <div class="nav__menu" id="nav-menu">
@@ -36,10 +36,10 @@
                         <a href="index.html#products" class="nav__link">Plants</a>
                     </li>
                     <li class="nav__item">
-                        <a href="farmers.html" class="nav__link active-link">Market</a>
+                        <a href="farmers.html" class="nav__link">Market</a>
                     </li>
                     <li class="nav__item">
-                        <a href="chatbot.html" class="nav__link">AI Chatbot</a>
+                        <a href="chatbot.html" class="nav__link active-link">AI Chatbot</a>
                     </li>
                     <li class="nav__item">
                         <a href="index.html#contact" class="nav__link">Contact Us</a>
@@ -63,64 +63,69 @@
     </header>
 
     <main class="main">
-        <!--==================== FARMERS HERO ====================-->
-        <section class="farmers-hero">
-            <div class="farmers-hero__content container">
-                <h1 class="farmers-hero__title">
-                    Connect with Local Farmers
-                </h1>
-                <p class="farmers-hero__description">
-                    Discover and schedule quality seeds and plants directly from trusted farmers near you
+        <!--==================== CHATBOT HERO ====================-->
+        <section class="chatbot-hero section">
+            <div class="chatbot-hero__content container">
+                <h1 class="chatbot-hero__title">Farmer AI Chatbot</h1>
+                <p class="chatbot-hero__description">
+                    Ask your farming questions and get fast, expert-style answers tailored for crop care, pests, soil, and scheduling.
                 </p>
             </div>
         </section>
 
-        <!--==================== FARMERS SEARCH & FILTER ====================-->
-        <section class="farmers section container" id="farmers">
-            <div class="farmers__controls">
-                <!-- Search Bar -->
-                <div class="farmers__search">
-                    <i class="ri-search-line farmers__search-icon"></i>
-                    <input 
-                        type="text" 
-                        id="searchInput" 
-                        class="farmers__search-input" 
-                        placeholder="Search farmers by name or location..."
-                    >
-                </div>
+        <section class="chatbot section container">
+            <div class="chatbot__layout">
+                <article class="chatbot__panel">
+                    <div class="chatbot__header">
+                        <div>
+                            <span class="chatbot__label">Farmer Assistant</span>
+                            <h2 class="chatbot__title">Your farming helper</h2>
+                        </div>
+                        <i class="ri-ai-fill chatbot__icon"></i>
+                    </div>
 
-                <!-- Filter by Crop Types -->
-                <div class="farmers__filters">
-                    <button class="farmers__filter-btn farmers__filter-btn--active" data-filter="all">
-                        All Crops
-                    </button>
-                    <button class="farmers__filter-btn" data-filter="vegetables">
-                        <i class="ri-leaf-line"></i> Vegetables
-                    </button>
-                    <button class="farmers__filter-btn" data-filter="fruits">
-                        <i class="ri-apple-line"></i> Fruits
-                    </button>
-                    <button class="farmers__filter-btn" data-filter="spices">
-                        <i class="ri-fire-line"></i> Spices
-                    </button>
-                    <button class="farmers__filter-btn" data-filter="herbs">
-                        <i class="ri-flower-line"></i> Herbs
-                    </button>
-                    <button class="farmers__filter-btn" data-filter="grains">
-                        <i class="ri-plant-line"></i> Grains
-                    </button>
-                </div>
-            </div>
+                    <div class="chatbot__messages" id="chatMessages">
+                        <div class="chatbot__message chatbot__message--bot">
+                            <p class="chatbot__message-text">Hi there! I can help you with planting, harvesting, pest control, and farm management. Ask me anything.</p>
+                        </div>
+                    </div>
 
-            <!-- Farmers Cards Container -->
-            <div class="farmers__container grid" id="farmersContainer">
-                <!-- Cards will be dynamically inserted here -->
-            </div>
+                    <form class="chatbot__form" id="chatForm">
+                        <input type="text" id="chatInput" class="chatbot__input" placeholder="Type your question here..." autocomplete="off">
+                        <button type="submit" class="chatbot__send button button--flex">
+                            Send <i class="ri-arrow-right-up-line button__icon"></i>
+                        </button>
+                    </form>
+                </article>
 
-            <!-- No Results Message -->
-            <div class="farmers__no-results" id="noResults" style="display: none;">
-                <i class="ri-search-eye-line"></i>
-                <p>No farmers found matching your search.</p>
+                <aside class="chatbot__aside">
+                    <div class="chatbot__card">
+                        <h3 class="chatbot__card-title">Designed for farmers</h3>
+                        <p class="chatbot__card-description">
+                            This UI is built to help you quickly ask about crops, irrigation, soil health, and farm scheduling.
+                        </p>
+                    </div>
+
+                    <div class="chatbot__card chatbot__card--info">
+                        <h3 class="chatbot__card-title">Quick prompts</h3>
+                        <ul class="chatbot__benefits">
+                            <li><i class="ri-check-line"></i> Best time to plant tomatoes</li>
+                            <li><i class="ri-check-line"></i> Natural pest control ideas</li>
+                            <li><i class="ri-check-line"></i> How to improve soil quality</li>
+                        </ul>
+                    </div>
+
+                    <div class="chatbot__card chatbot__card--stats">
+                        <div class="chatbot__stat">
+                            <span>Crop Advice</span>
+                            <strong>24/7</strong>
+                        </div>
+                        <div class="chatbot__stat">
+                            <span>Farming Tips</span>
+                            <strong>100+</strong>
+                        </div>
+                    </div>
+                </aside>
             </div>
         </section>
     </main>
@@ -195,17 +200,13 @@
     </footer>
 
     <!--=============== SCROLL UP ===============-->
-    <a href="#" class="scrollup" id="scroll-up"> 
+    <a href="#" class="scrollup" id="scroll-up">
         <i class="ri-arrow-up-fill scrollup__icon"></i>
     </a>
 
     <!--=============== SCROLL REVEAL ===============-->
     <script src="assets/js/scrollreveal.min.js"></script>
-    
-    <!--=============== MAIN JS ===============-->
     <script src="assets/js/main.js"></script>
-
-    <!--=============== FARMERS JS ===============-->
-    <script src="assets/js/farmers.js"></script>
+    <script src="assets/js/chatbot.js"></script>
 </body>
 </html>
