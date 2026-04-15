@@ -1,12 +1,14 @@
 /*=============== FARMERS HERO ===============*/
 .farmers-hero {
   background: linear-gradient(135deg, var(--first-color) 0%, var(--first-color-alt) 100%);
-  padding: 2rem 0;
+  padding: 5rem 0 2rem 0;
   color: #FFF;
 }
 
 .farmers-hero__content {
   text-align: center;
+  max-width: 860px;
+  margin: 100px auto;
 }
 
 .farmers-hero__title {
@@ -37,10 +39,16 @@
   display: grid;
 }
 
+.farmers__controls {
+  display: grid;
+  gap: 1.5rem;
+}
+
 /*=============== SEARCH BAR ===============*/
 .farmers__search {
   position: relative;
-  margin-bottom: 1.5rem;
+  margin: 0 auto 1.5rem;
+  max-width: 860px;
 }
 
 .farmers__search-icon {
@@ -78,9 +86,10 @@
 /*=============== FILTER BUTTONS ===============*/
 .farmers__filters {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 0.75rem;
-  row-gap: 0.75rem;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .farmers__filter-btn {
@@ -117,8 +126,11 @@
 
 /*=============== FARMERS CARDS ===============*/
 .farmers__container {
+  display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .farmers__card {
@@ -292,7 +304,7 @@
 /* For small devices (320px - 575px) */
 @media screen and (max-width: 575px) {
   .farmers-hero {
-    padding: 1.5rem 0;
+    padding: 1.5rem 0 1.5rem 0;
   }
 
   .farmers-hero__content {
@@ -390,7 +402,7 @@
 /* For medium devices (576px - 767px) */
 @media screen and (min-width: 576px) {
   .farmers-hero {
-    padding: 2.5rem 0;
+    padding: 2.5rem 0 2.5rem 0;
   }
 
   .farmers-hero__title {
@@ -454,7 +466,7 @@
 /* For tablet devices (768px - 991px) */
 @media screen and (min-width: 768px) {
   .farmers-hero {
-    padding: 3rem 0;
+    padding: 3rem 0 3rem 0;
   }
 
   .farmers-hero__title {
@@ -517,7 +529,7 @@
 /* For large devices (992px - 1199px) */
 @media screen and (min-width: 992px) {
   .farmers-hero {
-    padding: 4rem 0;
+    padding: 4rem 0 4rem 0;
   }
 
   .farmers-hero__title {
