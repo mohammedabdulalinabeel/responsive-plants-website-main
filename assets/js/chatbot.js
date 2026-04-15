@@ -1,34 +1,58 @@
-const chatForm = document.getElementById('chatForm');
-const chatInput = document.getElementById('chatInput');
-const chatMessages = document.getElementById('chatMessages');
+const chatForm = document.getElementById("chatForm");
+const chatInput = document.getElementById("chatInput");
+const chatMessages = document.getElementById("chatMessages");
 
-const botReplies = [
-  'Try watering your crop early in the morning to reduce evaporation and improve absorption.',
-  'For healthy soil, add compost once a month and rotate crops regularly.',
-  'Keep an eye on leaf yellowing; it often means nutrient imbalance or overwatering.',
-  'Mix neem oil with water to manage common pests naturally without harming plants.',
-  'Planting legumes can improve soil nitrogen and support future vegetables.',
-  'Mulching helps retain moisture and keeps weeds down in the growing season.'
-];
+// Backend URL
+const API_URL = "http://127.0.0.1:8000/chat";
 
-function addMessage(text, sender = 'bot') {
-  const message = document.createElement('div');
+// Add message to UI
+function addMessage(text, sender = "bot") {
+  const message = document.createElement("div");
   message.className = `chatbot__message chatbot__message--${sender}`;
   message.innerHTML = `<p class="chatbot__message-text">${text}</p>`;
   chatMessages.appendChild(message);
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-chatForm.addEventListener('submit', (e) => {
+// Send message to FastAPI backend
+async function sendToBackend(userMessage) {
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ message: userMessage })
+    });
+
+    const data = await response.json();
+    return data.reply;
+  } catch (error) {
+    console.error("Backend Error:", error);
+    return "❌ Unable to connect to server. Please check if backend is running.";
+  }
+}
+
+// Handle chat form submit
+chatForm.addEventListener("submit", async (e) => {
   e.preventDefault();
+
   const userText = chatInput.value.trim();
   if (!userText) return;
 
-  addMessage(userText, 'user');
-  chatInput.value = '';
+  // Add user message
+  addMessage(userText, "user");
+  chatInput.value = "";
 
-  setTimeout(() => {
-    const reply = botReplies[Math.floor(Math.random() * botReplies.length)];
-    addMessage(reply, 'bot');
-  }, 700);
+  // Show bot typing message
+  addMessage("⏳ Thinking...", "bot");
+
+  // Get backend response
+  const botReply = await sendToBackend(userText);
+
+  // Remove typing message
+  chatMessages.lastChild.remove();
+
+  // Add actual bot response
+  addMessage(botReply, "bot");
 });
