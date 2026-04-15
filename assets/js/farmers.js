@@ -189,7 +189,7 @@ function renderFarmers(farmers) {
                         <i class="ri-phone-line"></i> Call
                     </button>
                     <button class="farmers__btn farmers__btn--primary">
-                        <i class="ri-calendar-line"></i> Schedule
+                        <i class="ri-map-pin-line"></i> Location
                     </button>
                 </div>
             </div>
@@ -258,7 +258,7 @@ function capitalizeFirstLetter(str) {
 /*=============== ADD EVENT LISTENERS TO ACTION BUTTONS ===============*/
 function addActionListeners() {
     const callBtns = document.querySelectorAll('.farmers__btn:not(.farmers__btn--primary)');
-    const scheduleBtns = document.querySelectorAll('.farmers__btn--primary');
+    const locationBtns = document.querySelectorAll('.farmers__btn--primary');
     
     callBtns.forEach(btn => {
         btn.addEventListener('click', function(e) {
@@ -269,13 +269,16 @@ function addActionListeners() {
         });
     });
     
-    scheduleBtns.forEach(btn => {
+    locationBtns.forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
             const card = this.closest('.farmers__card');
+            const location = card.querySelector('.farmers__info-item:last-child span').textContent;
             const farmerName = card.querySelector('.farmers__name').textContent;
-            const farmerPhone = card.querySelector('.farmers__info-item:first-child span').textContent;
-            alert(`Schedule requested for ${farmerName}\nContact: ${farmerPhone}`);
+            
+            // Open Google Maps with the location
+            const mapsUrl = `https://www.google.com/maps/search/${encodeURIComponent(location + ' ' + farmerName)}`;
+            window.open(mapsUrl, '_blank');
         });
     });
 }
