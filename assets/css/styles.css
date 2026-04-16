@@ -1062,3 +1062,21 @@ the website, in dark theme
     right: 3rem;
   }
 }
+
+.chatbot__message-text {
+  font-family: Arial, sans-serif;
+  font-size: 16px;          /* ChatGPT-like */
+  line-height: 1.6;
+  color: #111;
+  margin: 0;
+  white-space: normal;
+}
+
+/* Bold headings style */
+.chatbot__message-text strong {
+  font-size: 18px;          /* slightly bigger heading */
+  font-weight: 700;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 6px;
+}

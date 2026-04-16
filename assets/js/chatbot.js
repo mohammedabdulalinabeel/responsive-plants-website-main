@@ -9,10 +9,23 @@ const DEFAULT_BOT_MESSAGE = "Hi there! I can help you with planting, harvesting,
 // Add message to UI
 function addMessage(text, sender = "bot") {
   const message = document.createElement("div");
-  message.className = `chatbot__message chatbot__message--${sender} is-new`;
-  message.innerHTML = `<p class="chatbot__message-text">${text}</p>`;
+  message.className = `chatbot__message chatbot__message--${sender}`;
+
+  // Remove unwanted symbols and emojis
+  let formattedText = text
+    .replace(/━━━━━━━━━━━━━━━━━━━━━━/g, "") // remove separator lines
+    .replace(/[\u{1F300}-\u{1FAFF}]/gu, "") // remove emojis
+    .trim();
+
+  // Convert **bold** to <strong>
+  formattedText = formattedText.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+
+  // Convert new lines to <br>
+  formattedText = formattedText.replace(/\n/g, "<br>");
+
+  message.innerHTML = `<p class="chatbot__message-text">${formattedText}</p>`;
+
   chatMessages.appendChild(message);
-  setTimeout(() => message.classList.add('fade-in'), 10);
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
