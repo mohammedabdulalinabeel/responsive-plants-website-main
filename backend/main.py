@@ -17,13 +17,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 # -----------------------------
 # Request Body Model
 # -----------------------------
 class ChatRequest(BaseModel):
     message: str
-
 
 # -----------------------------
 # Utility Functions
@@ -73,83 +71,116 @@ def get_disease_data_from_db(crop_name: str):
     return result
 
 
+# ✅ Improved Crop Formatting
 def format_crop_response(crop_data: dict):
     if not crop_data:
         return "❌ No crop data found in database."
 
     response = f"""
-🌱 Crop: {crop_data.get("crop_name")}
+🌾 **{crop_data.get("crop_name")} Growing Guide (Simple Steps)**
 
-📌 Category: {crop_data.get("crop_category")}
-🌍 Soil Type: {crop_data.get("soil_type")}
-🧪 Soil pH: {crop_data.get("soil_ph")}
-🌤️ Climate: {crop_data.get("climate")}
-📅 Season: {crop_data.get("season")}
-🌡️ Temperature: {crop_data.get("temperature_range")}
-🌧️ Rainfall: {crop_data.get("rainfall_requirement")}
+━━━━━━━━━━━━━━━━━━━━━━
+🌱 1) Soil & Climate
+━━━━━━━━━━━━━━━━━━━━━━
+✅ Soil Type: {crop_data.get("soil_type")}
+✅ Soil pH: {crop_data.get("soil_ph")}
+✅ Climate: {crop_data.get("climate")}
+✅ Best Season: {crop_data.get("season")}
+✅ Temperature: {crop_data.get("temperature_range")}
+✅ Rainfall Requirement: {crop_data.get("rainfall_requirement")}
 
-🚜 Land Preparation:
+━━━━━━━━━━━━━━━━━━━━━━
+🚜 2) Land Preparation
+━━━━━━━━━━━━━━━━━━━━━━
 {crop_data.get("land_preparation")}
 
-🌾 Seed Rate per Acre:
-{crop_data.get("seed_rate_per_acre")}
+━━━━━━━━━━━━━━━━━━━━━━
+🌾 3) Seed Requirement
+━━━━━━━━━━━━━━━━━━━━━━
+📌 Seed Rate per Acre: {crop_data.get("seed_rate_per_acre")}
 
-🌱 Sowing Method:
-{crop_data.get("sowing_method")}
+━━━━━━━━━━━━━━━━━━━━━━
+🌱 4) Sowing / Planting Method
+━━━━━━━━━━━━━━━━━━━━━━
+📌 Method: {crop_data.get("sowing_method")}
+📏 Spacing: {crop_data.get("spacing")}
 
-📏 Spacing:
-{crop_data.get("spacing")}
+━━━━━━━━━━━━━━━━━━━━━━
+💧 5) Irrigation (Watering)
+━━━━━━━━━━━━━━━━━━━━━━
+✅ Method: {crop_data.get("irrigation_method")}
+✅ Frequency: {crop_data.get("irrigation_frequency")}
+🔥 Critical Stages: {crop_data.get("critical_stages")}
 
-💧 Irrigation:
-Method: {crop_data.get("irrigation_method")}
-Frequency: {crop_data.get("irrigation_frequency")}
-Critical Stages: {crop_data.get("critical_stages")}
+━━━━━━━━━━━━━━━━━━━━━━
+🧪 6) Fertilizer Recommendation
+━━━━━━━━━━━━━━━━━━━━━━
+📌 NPK: {crop_data.get("NPK_recommendation")}
 
-🧪 Fertilizer Recommendation:
-{crop_data.get("NPK_recommendation")}
-
-📌 Fertilizer Schedule:
+📅 Fertilizer Schedule:
 {crop_data.get("fertilizer_schedule")}
 
-🌿 Weed Management:
+━━━━━━━━━━━━━━━━━━━━━━
+🌿 7) Weed Management
+━━━━━━━━━━━━━━━━━━━━━━
 {crop_data.get("weed_management")}
 
-🐛 Pest Management:
+━━━━━━━━━━━━━━━━━━━━━━
+🐛 8) Pest Management
+━━━━━━━━━━━━━━━━━━━━━━
 {crop_data.get("pest_management")}
 
-🦠 Disease Management:
+━━━━━━━━━━━━━━━━━━━━━━
+🦠 9) Disease Management
+━━━━━━━━━━━━━━━━━━━━━━
 {crop_data.get("disease_management")}
 
-⏳ Harvest Time:
-{crop_data.get("harvest_time")}
+━━━━━━━━━━━━━━━━━━━━━━
+⏳ 10) Harvest Details
+━━━━━━━━━━━━━━━━━━━━━━
+✅ Harvest Time: {crop_data.get("harvest_time")}
+🌾 Maturity Signs: {crop_data.get("maturity_signs")}
+📦 Expected Yield per Acre: {crop_data.get("yield_per_acre")}
 
-✅ Maturity Signs:
-{crop_data.get("maturity_signs")}
-
-📦 Yield per Acre:
-{crop_data.get("yield_per_acre")}
-
-🏠 Storage Tips:
+━━━━━━━━━━━━━━━━━━━━━━
+🏠 11) Storage Tips
+━━━━━━━━━━━━━━━━━━━━━━
 {crop_data.get("storage_tips")}
 """
+
     return response.strip()
 
 
+# ✅ Improved Disease Formatting
 def format_disease_response(diseases: list):
     if not diseases:
         return "❌ No disease/pest data found for this crop."
 
-    response = "🦠 Common Diseases / Pests:\n\n"
-    for d in diseases:
-        response += f"""
-🔸 Disease: {d.get("disease_name")}
-Symptoms: {d.get("symptoms")}
-Cause: {d.get("cause")}
-Organic Solution: {d.get("organic_solution")}
-Chemical Solution: {d.get("chemical_solution")}
-Prevention: {d.get("prevention")}
+    response = "\n🦠 **Common Diseases / Pests (Simple Explanation)**\n"
+    response += "━━━━━━━━━━━━━━━━━━━━━━\n"
 
+    for i, d in enumerate(diseases, start=1):
+        response += f"""
+🔹 {i}) **{d.get("disease_name")}**
+
+📌 Symptoms:
+{d.get("symptoms")}
+
+⚠️ Cause:
+{d.get("cause")}
+
+🌿 Organic Solution:
+{d.get("organic_solution")}
+
+🧪 Chemical Solution:
+{d.get("chemical_solution")}
+
+✅ Prevention Tips:
+{d.get("prevention")}
+
+━━━━━━━━━━━━━━━━━━━━━━
 """
+
     return response.strip()
 
 
@@ -169,7 +200,7 @@ def chat(req: ChatRequest):
 
     if not crop_name:
         return {
-            "reply": "❌ Sorry, I could not detect the crop name. Please mention the crop name (example: rice, tomato, banana)."
+            "reply": "❌ Sorry, I could not detect the crop name.\n\nPlease mention crop name like:\n✅ rice\n✅ tomato\n✅ banana\n✅ coconut"
         }
 
     # Fetch crop info from MySQL
