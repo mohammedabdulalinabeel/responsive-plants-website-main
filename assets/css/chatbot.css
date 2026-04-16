@@ -88,12 +88,17 @@
   line-height: 1.6;
   font-size: var(--normal-font-size);
   word-wrap: break-word;
-  opacity: 0;
-  transform: translateY(10px);
+  opacity: 1;
+  transform: translateY(0);
   transition: opacity 0.3s ease-in, transform 0.3s ease-in;
 }
 
-.chatbot__message.fade-in {
+.chatbot__message.is-new {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.chatbot__message.is-new.fade-in {
   opacity: 1;
   transform: translateY(0);
 }

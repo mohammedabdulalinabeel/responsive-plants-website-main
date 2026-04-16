@@ -9,9 +9,10 @@ const DEFAULT_BOT_MESSAGE = "Hi there! I can help you with planting, harvesting,
 // Add message to UI
 function addMessage(text, sender = "bot") {
   const message = document.createElement("div");
-  message.className = `chatbot__message chatbot__message--${sender}`;
+  message.className = `chatbot__message chatbot__message--${sender} is-new`;
   message.innerHTML = `<p class="chatbot__message-text">${text}</p>`;
   chatMessages.appendChild(message);
+  setTimeout(() => message.classList.add('fade-in'), 10);
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
