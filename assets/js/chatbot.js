@@ -9,9 +9,35 @@ const API_URL = "http://127.0.0.1:8000/chat";
 function addMessage(text, sender = "bot") {
   const message = document.createElement("div");
   message.className = `chatbot__message chatbot__message--${sender}`;
-  message.innerHTML = `<p class="chatbot__message-text">${text}</p>`;
+  
+  let formattedText = text;
+  if (sender === "bot") {
+    formattedText = formatBotMessage(text);
+  } else {
+    formattedText = `<p>${text}</p>`;
+  }
+  
+  message.innerHTML = `<div class="chatbot__message-content">${formattedText}</div>`;
   chatMessages.appendChild(message);
+  
+  // Add fade-in animation
+  setTimeout(() => message.classList.add('fade-in'), 10);
+  
   chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+// Format bot message with HTML
+function formatBotMessage(text) {
+  // Replace <br> with paragraph breaks
+  let html = text.replace(/<br\s*\/?>/gi, '</p><p>');
+  
+  // Make headings bold
+  html = html.replace(/(🌱 [^:]*:)/g, '<strong>$1</strong>');
+  html = html.replace(/(📌 [^:]*:)/g, '<strong>$1</strong>');
+  html = html.replace(/(💧 [^:]*:)/g, '<strong>$1</strong>');
+  // Add more patterns if needed
+  
+  return '<p>' + html + '</p>';
 }
 
 // Send message to FastAPI backend
