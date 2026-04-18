@@ -3,7 +3,7 @@ const chatInput = document.getElementById("chatInput");
 const chatMessages = document.getElementById("chatMessages");
 
 // Backend URL
-const API_URL = "https://plantgrowingguide.netlify.app/chat";
+const API_URL = "https://responsive-plants-website-main.onrender.com/chat";
 const DEFAULT_BOT_MESSAGE = "Hi there! I can help you with planting, harvesting, pest control, and farm management. Ask me anything.";
 
 // Add message to UI
