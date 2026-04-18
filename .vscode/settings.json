@@ -1,4 +1,30 @@
 {
     "liveServer.settings.port": 5501,
-    "python-envs.defaultEnvManager": "ms-python.python:system"
+    "python-envs.defaultEnvManager": "ms-python.python:system",
+    "python.defaultInterpreterPath": "venv\\Scripts\\python.exe",
+    "files.exclude": {
+        "**/venv": true,
+        "**/env": true,
+        "**/__pycache__": true,
+        "**/*.pyc": true,
+        "**/.pytest_cache": true,
+        "**/node_modules": true,
+        "**/.env": true,
+        "**/dist": true,
+        "**/build": true
+    },
+    "search.exclude": {
+        "**/venv": true,
+        "**/env": true,
+        "**/__pycache__": true,
+        "**/node_modules": true,
+        "**/dist": true,
+        "**/build": true
+    },
+    "files.watcherExclude": {
+        "**/venv/**": true,
+        "**/env/**": true,
+        "**/__pycache__/**": true,
+        "**/node_modules/**": true
+    }
 }

@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Database
+*.sqlite
+*.sqlite3
+*.db
+
+# Chroma (keep the folder but not generated files)
+backend/chroma_db_hybrid/*
+!backend/chroma_db_hybrid/.gitkeep
+
+# Node (if using any frontend build tools)
+node_modules/
+npm-debug.log
+package-lock.json
+
+# Environment variables
+.env
+.env.local
+.env.*.local
