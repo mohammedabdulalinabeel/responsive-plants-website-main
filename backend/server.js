@@ -5,7 +5,7 @@ const fetch = globalThis.fetch || require("undici").fetch;
 
 const app = express();
 const port = process.env.PORT || 8000;
-const model = process.env.MODEL || "gemini-pro";
+const model = process.env.MODEL || "gemini-2.5-flash";
 const apiKey = process.env.GOOGLE_API_KEY;
 
 app.use(cors());
@@ -26,7 +26,7 @@ app.post("/chat", async (req, res) => {
       return res.status(400).json({ reply: "Invalid request: message is required." });
     }
 
-    const endpoint = `https://generativelanguage.googleapis.com/v1beta2/models/${model}:generateMessage?key=${encodeURIComponent(apiKey)}`;
+    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(apiKey)}`;
 
     const systemPrompt = `You are a friendly and helpful farm assistant. Answer questions about planting, harvesting, pest control, soil health, irrigation, and crop management. Keep responses practical and easy to follow for farmers.`;
 
@@ -36,27 +36,20 @@ app.post("/chat", async (req, res) => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        prompt: {
-          messages: [
-            {
-              author: "system",
-              content: {
-                type: "text",
-                text: systemPrompt
+        contents: [
+          {
+            role: "user",
+            parts: [
+              {
+                text: `${systemPrompt}\n\nUser Question:\n${userMessage}`
               }
-            },
-            {
-              author: "user",
-              content: {
-                type: "text",
-                text: userMessage
-              }
-            }
-          ]
-        },
-        temperature: 0.2,
-        topP: 0.9,
-        candidateCount: 1
+            ]
+          }
+        ],
+        generationConfig: {
+          temperature: 0.2,
+          topP: 0.9
+        }
       })
     });
 
@@ -68,7 +61,7 @@ app.post("/chat", async (req, res) => {
 
     const json = await response.json();
     const candidate = json?.candidates?.[0];
-    const answer = candidate?.content?.find((item) => item.type === "text")?.text;
+    const answer = candidate?.content?.parts?.[0]?.text;
 
     if (!answer) {
       console.error("Gemini API response missing answer:", JSON.stringify(json));
