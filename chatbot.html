@@ -16,196 +16,41 @@
 
     <title>Farmer AI Chatbot - PLANT GROWING GUIDE</title>
 </head>
-<body>
-    <!--==================== HEADER ====================-->
-    <header class="header" id="header">
-        <nav class="nav container">
-            <a href="index.html" class="nav__logo">
-                <i class="ri-leaf-line nav__logo-icon"></i>
-            </a>
+<body class="dark-theme">
+    <div class="chat-app">
+        <!-- Top Navigation -->
+        <header class="chat-header">
+            <a href="index.html" class="chat-back"><i class="ri-arrow-left-s-line"></i> Home</a>
+            <span class="chat-title">Farmer AI <i class="ri-leaf-line"></i></span>
+            <i class="ri-sun-line change-theme" id="theme-button" style="cursor: pointer;"></i>
+        </header>
 
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li class="nav__item">
-                        <a href="index.html#home" class="nav__link">Home</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="index.html#about" class="nav__link">About</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="index.html#products" class="nav__link">Plants</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="farmers.html" class="nav__link">Market</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="chatbot.html" class="nav__link active-link">AI Chatbot</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="index.html#contact" class="nav__link">Contact Us</a>
-                    </li>
-                </ul>
-
-                <div class="nav__close" id="nav-close">
-                    <i class="ri-close-line"></i>
+        <!-- Main Chat Area -->
+        <main class="chat-main">
+            <div class="chat-messages-container">
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Messages will be injected here -->
                 </div>
             </div>
-
-            <div class="nav__btns">
-                <!-- Theme change button -->
-                <i class="ri-moon-line change-theme" id="theme-button"></i>
-
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class="ri-menu-line"></i>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <main class="main">
-        <!--==================== CHATBOT HERO ====================-->
-        <section class="chatbot-hero section">
-            <div class="chatbot-hero__content container">
-                <h1 class="chatbot-hero__title">Farmer AI Chatbot</h1>
-                <p class="chatbot-hero__description">
-                    Ask your farming questions and get fast, expert-style answers tailored for crop care, pests, soil, and scheduling.
-                </p>
-            </div>
-        </section>
-
-        <section class="chatbot section container">
-            <div class="chatbot__layout">
-                <article class="chatbot__panel">
-                    <div class="chatbot__header">
-                        <div>
-                            <span class="chatbot__label">Farmer Assistant</span>
-                            <h2 class="chatbot__title">Your farming helper</h2>
-                        </div>
-                        <i class="ri-ai-fill chatbot__icon"></i>
-                    </div>
-
-                    <div class="chatbot__messages" id="chatMessages">
-                        <div class="chatbot__message chatbot__message--bot">
-                            <p class="chatbot__message-text">Hi there! I can help you with planting, harvesting, pest control, and farm management. Ask me anything.</p>
-                        </div>
-                    </div>
-
-                    <form class="chatbot__form" id="chatForm">
-                        <input type="text" id="chatInput" class="chatbot__input" placeholder="Type your question here..." autocomplete="off">
-                        <button type="submit" class="chatbot__send button button--flex">
-                            Send <i class="ri-arrow-right-up-line button__icon"></i>
+            
+            <!-- Input Area -->
+            <div class="chat-input-container">
+                <form class="chat-form" id="chatForm">
+                    <div class="chat-input-wrapper">
+                        <input type="text" id="chatInput" placeholder="Message Farmer AI..." autocomplete="off">
+                        <button type="submit" class="chat-send">
+                            <i class="ri-arrow-up-line"></i>
                         </button>
-                    </form>
-                </article>
-
-                <aside class="chatbot__aside">
-                    <div class="chatbot__card">
-                        <h3 class="chatbot__card-title">Designed for farmers</h3>
-                        <p class="chatbot__card-description">
-                            This UI is built to help you quickly ask about crops, irrigation, soil health, and farm scheduling.
-                        </p>
                     </div>
-
-                    <div class="chatbot__card chatbot__card--info">
-                        <h3 class="chatbot__card-title">Quick prompts</h3>
-                        <ul class="chatbot__benefits">
-                            <li><i class="ri-check-line"></i> Best time to plant tomatoes</li>
-                            <li><i class="ri-check-line"></i> Natural pest control ideas</li>
-                            <li><i class="ri-check-line"></i> How to improve soil quality</li>
-                        </ul>
+                    <div class="chat-disclaimer">
+                        Farmer AI can make mistakes about farming techniques. Verify important information.
                     </div>
-
-                    <div class="chatbot__card chatbot__card--stats">
-                        <div class="chatbot__stat">
-                            <span>Crop Advice</span>
-                            <strong>24/7</strong>
-                        </div>
-                        <div class="chatbot__stat">
-                            <span>Farming Tips</span>
-                            <strong>100+</strong>
-                        </div>
-                    </div>
-                </aside>
+                </form>
             </div>
-        </section>
-    </main>
+        </main>
+    </div>
 
-    <!--==================== FOOTER ====================-->
-    <footer class="footer section">
-        <div class="footer__container container grid">
-            <div class="footer__content">
-                <a href="#" class="footer__logo">
-                    <i class="ri-leaf-line footer__logo-icon"></i> Plantex
-                </a>
-
-                <h3 class="footer__title">
-                    Subscribe to our newsletter <br> to stay update
-                </h3>
-
-                <div class="footer__subscribe">
-                    <input type="email" placeholder="Enter your email" class="footer__input">
-
-                    <button class="button button--flex footer__button">
-                        Subscribe
-                        <i class="ri-arrow-right-up-line button__icon"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div class="footer__content">
-                <h3 class="footer__title">Our Address</h3>
-
-                <ul class="footer__data">
-                    <li class="footer__information">4/2 Ramanujan street. srinivasa nagar</li>
-                    <li class="footer__information">Satya murthi road, New perukulattur, Chennai 600063</li>
-                    <li class="footer__information">+91 6381676648</li>
-                </ul>
-            </div>
-
-            <div class="footer__content">
-                <h3 class="footer__title">Contact Us</h3>
-
-                <ul class="footer__data">
-                    <li class="footer__information">+91 6381676648</li>
-                    
-                    <div class="footer__social">
-                        <a href="https://www.facebook.com/" class="footer__social-link">
-                            <i class="ri-facebook-fill"></i>
-                        </a>
-                        <a href="https://www.instagram.com/" class="footer__social-link">
-                            <i class="ri-instagram-line"></i>
-                        </a>
-                        <a href="https://twitter.com/" class="footer__social-link">
-                            <i class="ri-twitter-fill"></i>
-                        </a>
-                    </div>
-                </ul>
-            </div>
-
-            <div class="footer__content">
-                <h3 class="footer__title">
-                    We accept all credit cards
-                </h3>
-
-                <div class="footer__cards">
-                    <img src="assets/img/card1.png" alt="" class="footer__card">
-                    <img src="assets/img/card2.png" alt="" class="footer__card">
-                    <img src="assets/img/card3.png" alt="" class="footer__card">
-                    <img src="assets/img/card4.png" alt="" class="footer__card">
-                </div>
-            </div>
-        </div>
-
-        <p class="footer__copy">&#169; PLANT GROWING GUIDE. All rigths reserved</p>
-    </footer>
-
-    <!--=============== SCROLL UP ===============-->
-    <a href="#" class="scrollup" id="scroll-up">
-        <i class="ri-arrow-up-fill scrollup__icon"></i>
-    </a>
-
-    <!--=============== SCROLL REVEAL ===============-->
-    <script src="assets/js/scrollreveal.min.js"></script>
+    <!--=============== SCRIPTS ===============-->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/chatbot.js"></script>
 </body>
