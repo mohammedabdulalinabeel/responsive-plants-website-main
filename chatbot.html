@@ -36,7 +36,17 @@
             <!-- Input Area -->
             <div class="chat-input-container">
                 <form class="chat-form" id="chatForm">
+                    <!-- Image Preview Container -->
+                    <div class="image-preview-container" id="imagePreviewContainer" style="display: none;">
+                        <img src="" alt="Image Preview" id="imagePreview">
+                        <button type="button" class="remove-image-btn" id="removeImageBtn"><i class="ri-close-line"></i></button>
+                    </div>
                     <div class="chat-input-wrapper">
+                        <!-- Hidden file input -->
+                        <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                        <button type="button" class="chat-attachment-btn" id="attachmentBtn" title="Attach a plant image">
+                            <i class="ri-camera-line"></i>
+                        </button>
                         <input type="text" id="chatInput" placeholder="Message Farmer AI..." autocomplete="off">
                         <button type="submit" class="chat-send">
                             <i class="ri-arrow-up-line"></i>
