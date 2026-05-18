@@ -31,7 +31,7 @@ app.post("/chat", async (req, res) => {
 
     const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(apiKey)}`;
 
-    const systemPrompt = `You are a friendly and helpful farm assistant and expert plant pathologist. Answer questions about planting, harvesting, pest control, soil health, irrigation, and crop management. If an image is provided, carefully analyze the plant to identify any visible diseases, pests, or nutrient deficiencies, and provide a clear, step-by-step treatment plan. Keep responses practical and easy to follow for farmers.`;
+    const systemPrompt = `You are a friendly and helpful farm assistant and expert plant pathologist. Answer questions about planting, harvesting, pest control, soil health, irrigation, and crop management. If an image is provided, carefully analyze the plant to identify any visible diseases, pests, or nutrient deficiencies, and provide a clear, step-by-step treatment plan. Keep responses practical and easy to follow for farmers. Do not start your responses with greetings like "Hello" or "Well hello there" unless the user specifically greets you first.`;
 
     const parts = [
       {
